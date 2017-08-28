@@ -1,14 +1,20 @@
+import { SqlCompleterService } from './shared/sql-completer.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SqlEditorComponent } from './editor/editor.component';
+import { SuggestionPopupDirective } from './suggestion-popup.directive';
 
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [SqlEditorComponent],
+  declarations: [SqlEditorComponent, SuggestionPopupDirective],
   exports: [
-    SqlEditorComponent
+    SqlEditorComponent,
+    SuggestionPopupDirective
+  ],
+  providers: [
+    SqlCompleterService
   ]
 })
 export class SqlEditorModule { }

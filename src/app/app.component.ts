@@ -12,6 +12,6 @@ export class AppComponent {
   }
 
   onTextChange(text: string) {
-    console.log(text);
+    // console.log(`[APP] ${text}`);
   }
 }
