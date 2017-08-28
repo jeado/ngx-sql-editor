@@ -1,4 +1,3 @@
-import { SqlEditorModule } from './sql-editor.module';
 import { SqlCompleterService } from './shared/sql-completer.service';
 import { SqlEditorComponent } from './editor/editor.component';
 import { Directive, OnInit } from '@angular/core';
@@ -13,7 +12,7 @@ const Search = ace.acequire('ace/search').Search;
 })
 export class SuggestionPopupDirective implements OnInit {
   aceEditor;
-  
+
   constructor(private sqlEditorComp: SqlEditorComponent, private sqlCompleter: SqlCompleterService) {}
 
   ngOnInit(): void {
@@ -21,18 +20,18 @@ export class SuggestionPopupDirective implements OnInit {
     const editor: any = this.aceEditor;
     editor.completers = [this.sqlCompleter];
 
-    (this.aceEditor.commands as any).on('afterExec', e => {   
+    (this.aceEditor.commands as any).on('afterExec', e => {
       if (e.command.name === 'backspace') {
         if (editor.completer && editor.completer.activated) {
           editor.completer.detach();
         }
-      } else if (e.command.name === 'insertstring') {      
+      } else if (e.command.name === 'insertstring') {
         this.open(e.editor);
       }
     });
 
     this.aceEditor.on('change', (e: {start: {row: number, column: number}, lines: string[], end: {row: number, column: number}}) => {
-      const hasSelectFrom = /select( )*from/i.test(this.aceEditor.session.getValue())
+      const hasSelectFrom = /select( )*from/i.test(this.aceEditor.session.getValue());
       if (hasSelectFrom) {
         const search = new Search();
         search.setOptions({
@@ -45,7 +44,7 @@ export class SuggestionPopupDirective implements OnInit {
             this.open(this.aceEditor);
           });
         }
-      }     
+      }
     });
 
     this.aceEditor.on('focus', (e) => {
@@ -61,6 +60,6 @@ export class SuggestionPopupDirective implements OnInit {
       }
       editor.completer.autoInsert = false;
       editor.completer.showPopup(editor);
-    }    
+    }
   }
 }

@@ -39,13 +39,14 @@ export class SqlEditorComponent implements OnInit, ControlValueAccessor {
     this.editor = ace.edit(this.el.nativeElement.querySelector('#editor'));
     this.editor.setOptions({
       maxLines: Infinity,
-      minLines: 10
-    })
+      minLines: 10,
+    });
+    // this.editor.$blockScrolling = 0;
     this.editor.getSession().setMode('ace/mode/sql');
-    this.editor.on('change', (e: {start: {row: number, col: number}, lines: string[], end: {row: number, column: number}}) => {     
+    this.editor.on('change', (e: {start: {row: number, col: number}, lines: string[], end: {row: number, column: number}}) => {
       this.updateText();
     });
-    this.editor.on('paste', () => this.updateText());    
+    this.editor.on('paste', () => this.updateText());
   }
 
   setText(text: any) {

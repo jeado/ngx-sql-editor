@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SqlEditorModule } from './sql-editor/sql-editor.module';
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [

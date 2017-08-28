@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SqlEditorComponent } from './editor/editor.component';
 import { SuggestionPopupDirective } from './suggestion-popup.directive';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [SqlEditorComponent, SuggestionPopupDirective],
   exports: [
